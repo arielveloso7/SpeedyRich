@@ -1,0 +1,19 @@
+header .navbar {
+  background-color: turquoise;
+}
+
+/*
+body{
+  background-image: url("../../assets/png/money.png");
+  background-size: 35px 35px;
+  background-repeat: repeat;
+}
+*/
+
+.bg-purple{
+  background-color: rgb(160, 107, 221);
+}
+
+#enviar{
+  background-color: rgb(160, 107, 221);
+}

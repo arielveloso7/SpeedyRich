@@ -1,0 +1,133 @@
+<header>
+
+    <nav class="navbar navbar-light justify-content-between">
+        <a [routerLink]="['/home']" class="navbar-brand text-white"><img src="../../assets/png/car.png" width="60"
+                height="60">
+            SpeedyRich</a>
+
+        <a class="form-inline">
+            <button class="btn btn-outline-light my-2 my-sm-0" (click)="logout()">Salir</button>
+        </a>
+    </nav>
+
+</header>
+
+
+<h1>LISTA DE SOLICITUDES DE CREDITO</h1>
+
+<div>true</div>
+
+<div *ngFor="let cliente of arrClientes; index as i">
+    <h3>{{cliente.nombre +' '+  cliente.apellidos}}</h3>
+    {{i}}
+    <p>{{cliente.solicitudes[0].ingresos}}</p>
+    <p>{{cliente.solicitudes[0].estado}}</p>
+
+    <div>
+
+        <button *ngIf="rol === 'Administrador'" type="button" class="btn btn-primary" data-toggle="modal"
+            [attr.data-target]="'#modal'+ i" (click)="actualizarSolicitud(cliente._id)">
+            Actualizar
+        </button>
+
+    </div>
+</div>
+
+<div *ngFor="let cliente of arrClientes; index as i" class="modal fade" id="modal{{i}}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div *ngIf="actualizar" class="modal-body">
+
+                <div class="form-group">
+                    <label>NOMBRE</label>
+                    <input type="text" [(ngModel)]="actualizar.nombre">
+                </div>
+
+                <div class="form-group">
+                    <label>APELLIDOS</label>
+                    <input type="text" [(ngModel)]="actualizar.apellidos">
+                </div>
+
+                <div class="form-group">
+                    <label>DNI/NIE</label>
+                    <input type="text" [(ngModel)]="actualizar.dni">
+                </div>
+
+                <div class="form-group">
+                    <label>FECHA DE NACIMIENTO</label>
+                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].fecha_nacimiento">
+                </div>
+
+                <div class="form-group">
+                    <label>TELEFONO</label>
+                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].telefono">
+                </div>
+
+                <div class="form-group">
+                    <label>DIRECCION</label>
+                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].direccion">
+                </div>
+
+                <div class="form-group">
+                    <label>EMAIL</label>
+                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].email">
+                </div>
+
+                <div class="form-group">
+                    <label>INGRESOS</label>
+                    <select [(ngModel)]="actualizar.solicitudes[0].ingresos">
+                        <option>Asalariado por cuenta ajena</option>
+                        <option>Autonomo</option>
+                        <option>Pensionista/Jubilado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>SU CUENTA BANCARIA</label>
+                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].banco">
+                </div>
+
+                <div class="form-group">
+                    <label>ESTADO</label>
+                    <select [(ngModel)]="actualizar.solicitudes[0].estado">
+                        <option>pendiente</option>
+                        <option>aprobado</option>
+                        <option>denegado</option>
+                    </select>
+                </div>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button (click)="enviar()">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 
+<div *ngFor="let cliente of arrClientes; index as i" id="modal{{i}}" class="modal fade" tabindex="-1" role="dialog"
+    aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FORMULARIO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div> -->

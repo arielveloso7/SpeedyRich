@@ -1,0 +1,138 @@
+<header>
+
+    <nav class="navbar navbar-light justify-content-between">
+        <a [routerLink]="['/home']" class="navbar-brand text-white"><img src="../../assets/png/car.png" width="60"
+                height="60">
+            SpeedyRich</a>
+
+
+        <a class="form-inline">
+            <button [routerLink]="['/home']" class="btn btn-outline-light my-2 my-sm-0">Abandonar el proceso</button>
+        </a>
+    </nav>
+
+</header>
+
+<!--MAIN -->
+
+<main role="main" class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+        <img class="mr-3" src="../../assets/png/wallet.png" width="45" height="45">
+        <div class="lh-100">
+            <h5 class="mb-0 text-white lh-100">Formulario</h5>
+            <small>Completa el formulario con tus datos personales</small>
+        </div>
+    </div>
+
+
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+
+        <h6 class="border-bottom border-gray pb-2 mb-0">{{resultado}}</h6>
+
+
+        <form novalidate [formGroup]="formulario" (ngSubmit)="recogerDatos()" enctype="multipart/form-data">
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Nombre</strong>
+                    <input type="text" name="nombre" class="form-control" formControlName="nombre"
+                        placeholder="Introduce tu nombre">
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Apellidos</strong>
+                    <input type="text" name="apellidos" class="form-control" formControlName="apellidos"
+                        placeholder="Introduce tus apellidos">
+                </div>
+            </div>
+
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Documento de identidad</strong>
+                    <input type="text" name="dni" class="form-control" formControlName="dni"
+                        placeholder="Introduce tu numero de DNI o NIE">
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Clave</strong>
+                    <input type="password" name="clave" class="form-control" formControlName="clave"
+                        placeholder="Introduce una clave personal">
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Fecha de nacimiento</strong>
+                    <input type="text" name="fecha_nacimiento" class="form-control" formControlName="fecha_nacimiento"
+                        placeholder="Introduce tu fecha de nacimiento">
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Teléfono</strong>
+                    <input type="text" name="telefono" class="form-control" formControlName="telefono"
+                        placeholder="Introduce tu número teléfono">
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Domicilio</strong>
+                    <input type="text" name="direccion" class="form-control" formControlName="direccion"
+                        placeholder="Introduce tu dirección de domicilio completa">
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Email</strong>
+                    <input type="text" name="eamil" class="form-control" formControlName="eamil"
+                        placeholder="Introduce tu dirección de email">
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Ingresos</strong>
+                    <select name="ingresos" class="form-control" formControlName="ingresos">
+                        <option selected value>Asalariado por cuenta ajena</option>
+                        <option>Autonomo</option>
+                        <option>Pensionista/Jubilado</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Cuenta bancaria</strong>
+                    <input type="text" name="banco" class="form-control" formControlName="banco"
+                        placeholder="Introduce el IBAN de tu cuenta bancaria donde quieres el ingreso">
+                </div>
+            </div>
+
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">Carga aquí tu documentación</strong>
+                    <input type="file" name="image" class="form-control" formControlName="image"
+                        (change)="onFileChanged($event)">
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <input id="enviar" type="submit" class="btn btn-outline-light" value="Enviar">
+            </div>
+            <!--[disabled]=" !formulario.valid"
+    -->
+        </form>
+
+    </div>
+
+</main>

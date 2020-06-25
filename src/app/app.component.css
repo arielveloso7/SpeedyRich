@@ -1,0 +1,25 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+  .social-icons li{
+    display: inline;
+    font-size: 1.2em;
+    padding: 0.5em;
+  }
+
+  .social-icons li a{
+    color: turquoise;
+  }
+
+  .infromacion li {
+    font-size:10px;
+    list-style: none;
+    display: inline;
+    color: black;
+    padding: 0.5em;
+  }
+
+  #llamanos{
+    text-shadow: 1px 1px 1px rgb(214, 214, 214);
+  color: rgb(160, 107, 221);
+}
+
+ 

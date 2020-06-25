@@ -1,0 +1,81 @@
+<header>
+
+    <nav class="navbar navbar-light justify-content-between">
+        <a class="navbar-brand text-white"><img src="../../assets/png/car.png" width="60" height="60">
+            SpeedyRich</a>
+
+        <a class="form-inline">
+            <button class="btn btn-outline-light my-2 my-sm-0" data-toggle="modal" data-target="#myModal"
+                (click)="alreadyLogged()">Espacio
+                Cliente</button>
+        </a>
+    </nav>
+
+</header>
+
+<p>Calcular</p>
+<div class="form">
+
+    <div>
+        <label>IMPORTE</label>
+        <input type="range" min="500" max="5000" step="250" [(ngModel)]="importe">
+        <p>{{importe}}</p>
+    </div>
+
+    <div>
+        <label>MESES</label>
+        <input type="range" min="12" max="48" step="12" [(ngModel)]="meses">
+        <p>{{meses}}</p>
+    </div>
+    <div>
+        {{calculo(importe, meses)}}
+
+        <label>{{resultado}}</label>
+    </div>
+
+    <button [routerLink]="['/formulario']">Solicitar</button>
+
+    <!-- 
+-->
+</div>
+
+
+
+
+<!--Modal-->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="avatar"></div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <form #formLogin>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="DNI" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Contraseña" required autofocus>
+                    </div>
+
+                </form>
+
+                <div class="form-group">
+                    <input type="submit" data-dismiss="modal" class="btn btn-primary" value="Entrar"
+                        (click)="entrarEspacioCliente($event, formLogin)">
+                </div>
+
+                <div class="hint-text small">
+                    <a href="#">¿Has olvidado la contraseña?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--[disabled]="!formLogin.valid"
+-->
