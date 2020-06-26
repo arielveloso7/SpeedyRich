@@ -1,13 +1,14 @@
 <header>
 
     <nav class="navbar navbar-light justify-content-between">
-        <a [routerLink]="['/home']" class="navbar-brand text-white"><img src="../../assets/png/car.png" width="60"
+        <a [routerLink]="['/home']" class="navbar-brand text-white ml-4"><img src="../../assets/png/car.png" width="60"
                 height="60">
             SpeedyRich</a>
 
 
         <a class="form-inline">
-            <button [routerLink]="['/home']" class="btn btn-outline-light my-2 my-sm-0">Abandonar el proceso</button>
+            <button [routerLink]="['/home']" class="btn btn-outline-light my-2 my-sm-0 mr-4">Abandonar el
+                proceso</button>
         </a>
     </nav>
 
@@ -26,10 +27,9 @@
 
 
 
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="my-3 p-3 bg-light rounded shadow-sm">
 
         <h6 class="border-bottom border-gray pb-2 mb-0">{{resultado}}</h6>
-
 
         <form novalidate [formGroup]="formulario" (ngSubmit)="recogerDatos()" enctype="multipart/form-data">
 
@@ -51,7 +51,7 @@
 
 
             <div class="media text-muted pt-3">
-                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                <div class="media-body pb-3 mb-0 border-bottom border-gray">
                     <strong class="d-block text-gray-dark">Documento de identidad</strong>
                     <input type="text" name="dni" class="form-control" formControlName="dni"
                         placeholder="Introduce tu numero de DNI o NIE">
@@ -59,7 +59,7 @@
             </div>
 
             <div class="media text-muted pt-3">
-                <div class="media-body pb-3 mb-0  border-bottom border-gray">
+                <div class="media-body pb-3 mb-0 border-bottom border-gray">
                     <strong class="d-block text-gray-dark">Clave</strong>
                     <input type="password" name="clave" class="form-control" formControlName="clave"
                         placeholder="Introduce una clave personal">
@@ -93,7 +93,7 @@
             <div class="media text-muted pt-3">
                 <div class="media-body pb-3 mb-0  border-bottom border-gray">
                     <strong class="d-block text-gray-dark">Email</strong>
-                    <input type="text" name="eamil" class="form-control" formControlName="eamil"
+                    <input type="text" name="email" class="form-control" formControlName="email"
                         placeholder="Introduce tu dirección de email">
                 </div>
             </div>
@@ -102,7 +102,8 @@
                 <div class="media-body pb-3 mb-0  border-bottom border-gray">
                     <strong class="d-block text-gray-dark">Ingresos</strong>
                     <select name="ingresos" class="form-control" formControlName="ingresos">
-                        <option selected value>Asalariado por cuenta ajena</option>
+                        <option selected value>Selecciona el campo que corresponda con tus ingresos</option>
+                        <option>Asalariado por cuenta ajena</option>
                         <option>Autonomo</option>
                         <option>Pensionista/Jubilado</option>
 

@@ -85,13 +85,12 @@ export class AppService {
       }
     };
 
-    //console.log(datosCliente);
+    console.log(datosCliente);
 
     this.router.navigate(['/solicitudok']);
 
     return this.httpClient.post(this.urlCreate, formulario, { headers: {} }).toPromise();
   }
-
 
   getClientes() {
     return this.httpClient.get(this.urlCreate, { headers: { "Authorization": "bearer " + this.getToken() } }).toPromise();

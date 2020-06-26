@@ -1,3 +1,33 @@
 header .navbar {
   background-color: turquoise;
 }
+
+.btn{
+  background-color: turquoise;
+}
+
+section{
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(158, 158, 158, 0.8) 0 0 5px;
+  background-image: url(../../assets/fondo.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header{
+  background-color: turquoise
+}
+
+.fondoGris{
+    background-color: rgb(196, 193, 193);
+}
+
+.fondoVerde{
+    background-color: rgb(28, 206, 28);
+}
+
+.fondoRojo{
+    background-color: tomato;
+}

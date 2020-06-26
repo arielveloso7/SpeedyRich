@@ -17,7 +17,6 @@ export class EspacioclienteComponent implements OnInit {
     private appService: AppService,
     private router: Router
   ) {
-    //this.actualizar;
   }
 
   async ngOnInit() {
@@ -32,16 +31,12 @@ export class EspacioclienteComponent implements OnInit {
 
   actualizarSolicitud(id) {
 
-    //console.log("ID", id);
-    //console.log(this.arrClientes);
+
     this.actualizar = this.arrClientes.find(cliente => {
-      //
-      console.log("CLIENTE", cliente);
+
       if (cliente._id == id)
         return cliente;
     })
-
-    console.log(this.actualizar);
   }
 
   async enviar() {

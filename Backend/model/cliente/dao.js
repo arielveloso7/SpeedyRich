@@ -5,7 +5,8 @@ class clienteDAO {
 
 
     create(param, file) {
-        const solicitud = new Solicitud(param.solicitud);
+
+        const solicitud = new Solicitud(param);
 
         const cliente = new Cliente({
             nombre: param.nombre,
@@ -17,13 +18,10 @@ class clienteDAO {
 
         cliente.solicitudes.push(solicitud);
         return cliente.save();
-
     }
 
     list(param) {
-        //console.log(param)
         return Cliente.find(param);
-
     }
 
     listOne(id) {

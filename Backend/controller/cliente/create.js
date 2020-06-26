@@ -12,7 +12,6 @@ const create = async (req, res, next) => {
         body.clave = passwordHash;
 
         const filename = req.file.originalname;
-        const ext = path.parse(filename).ext;
 
         const cliente = await clienteDAO.create(body, filename);
         res.status(201).json(cliente);

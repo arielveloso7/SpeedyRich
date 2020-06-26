@@ -1,11 +1,11 @@
 <header>
 
     <nav class="navbar navbar-light justify-content-between">
-        <a class="navbar-brand text-white"><img src="../../assets/png/car.png" width="60" height="60">
+        <a class="navbar-brand text-white ml-4"><img src="../../assets/png/car.png" width="60" height="60">
             SpeedyRich</a>
 
         <a class="form-inline">
-            <button class="btn btn-outline-light my-2 my-sm-0" data-toggle="modal" data-target="#myModal"
+            <button class="btn btn-outline-light my-2 my-sm-0 mr-4" data-toggle="modal" data-target="#myModal"
                 (click)="alreadyLogged()">Espacio
                 Cliente</button>
         </a>
@@ -29,25 +29,21 @@
     </div>
     <div>
         {{calculo(importe, meses)}}
-
+        <p>CUOTA MENSUAL: {{cuotaMensual}}</p>
+        <p>TOTAL A PAGAR: {{total}}</p>
         <label>{{resultado}}</label>
     </div>
 
     <button [routerLink]="['/formulario']">Solicitar</button>
 
-    <!-- 
--->
 </div>
-
-
-
 
 <!--Modal-->
 <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-login">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="avatar"></div>
+                <div class="avatar"><img src="/../assets/png/investment.png" alt=""></div>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
@@ -64,18 +60,15 @@
 
                 </form>
 
-                <div class="form-group">
+                <div class="form-group text-center mt-4">
                     <input type="submit" data-dismiss="modal" class="btn btn-primary" value="Entrar"
                         (click)="entrarEspacioCliente($event, formLogin)">
                 </div>
 
-                <div class="hint-text small">
+                <div class="clave text-center">
                     <a href="#">¿Has olvidado la contraseña?</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!--[disabled]="!formLogin.valid"
--->

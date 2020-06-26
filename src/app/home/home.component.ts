@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   meses: number;
   arrCalculadora: any;
   resultado: string;
+  cuotaMensual: number;
+  total: number;
 
   user: any;
   public token: any;
@@ -25,8 +27,9 @@ export class HomeComponent implements OnInit {
   ) {
     this.importe = 500;
     this.meses = 12;
-    this.arrCalculadora = [];
     this.resultado = '';
+    this.cuotaMensual;
+    this.total;
 
 
   }
@@ -63,18 +66,11 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/espaciocliente']);
   }
 
-
-  datosCalculadora() {
-    this.arrCalculadora.push(this.importe, this.meses);
-    console.log(this.arrCalculadora);
-  }
-
-
   calculo(importe, meses) {
 
     importe = this.importe;
     meses = this.meses;
-    let interes = 0.35;
+    let interes = 0.55;
 
     //cambiamos las variables a meses
     let i = interes / 100;
@@ -83,8 +79,11 @@ export class HomeComponent implements OnInit {
     let factor = Math.pow(i + 1, meses);
     let cuota = importe * i * factor / (factor - 1);
 
-    //mostramos el resultado
-    this.resultado = "Importe solicitado: " + importe + " a " + meses + " meses, con un interés mensual de " + i * 100 + "%: la cuota mensual es de " + cuota.toFixed() + "€";
+    this.cuotaMensual = Math.round(cuota);
+    this.total = this.cuotaMensual * meses;
+
+    //mostramos el resultadom
+    this.resultado = "El importe solicitado es de " + importe + "€ a " + meses + " meses, con un interés mensual de " + i * 100 + "%. Tu cuota mensual es de " + this.cuotaMensual + "€.";
 
     this.appService.datosResultado(this.resultado);
 

@@ -12,7 +12,7 @@ const solicitudSchema = new Schema({
     banco: String,
     estado: {
         type: String,
-        default: 'pendiente',
+        default: 'Pendiente',
     },
     activo: {
         type: Boolean,
@@ -49,7 +49,7 @@ const clienteSchema = new Schema({
 });
 
 clienteSchema.methods.setImgUrl = function setImgUrl(filename) {
-    const localhost = 'http://localhost:3001';
+    const localhost = 'http://localhost:3000';
     this.image = `${localhost}/public/${filename}`;
 }
 

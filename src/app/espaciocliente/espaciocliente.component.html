@@ -1,133 +1,114 @@
 <header>
 
     <nav class="navbar navbar-light justify-content-between">
-        <a [routerLink]="['/home']" class="navbar-brand text-white"><img src="../../assets/png/car.png" width="60"
+        <a [routerLink]="['/home']" class="navbar-brand text-white ml-4"><img src="../../assets/png/car.png" width="60"
                 height="60">
             SpeedyRich</a>
 
         <a class="form-inline">
-            <button class="btn btn-outline-light my-2 my-sm-0" (click)="logout()">Salir</button>
+            <button class="btn btn-outline-light my-2 my-sm-0 mr-4" (click)="logout()">Salir</button>
         </a>
     </nav>
 
 </header>
 
+<section class="p-4">
+    <div *ngIf="rol === 'Administrador'" class="ml-4 py-3 text-white">
+        <h1>Listado de clientes</h1>
+    </div>
+    <div class="card-columns ml-5" *ngFor=" let cliente of arrClientes; index as i">
+        <div *ngIf="rol !== 'Administrador'" class="text-white p-3">
+            <h1>Hola {{cliente.nombre}}!</h1>
+            <h4>Tus datos personales:</h4>
+        </div>
 
-<h1>LISTA DE SOLICITUDES DE CREDITO</h1>
+        <div class="card" style="width: 18rem;">
+            <h5 class="header card-header text-white">{{cliente.nombre +' '+  cliente.apellidos}}</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{cliente.dni}}</li>
+                <li class="list-group-item">{{cliente.solicitudes[0].fecha_nacimiento}}</li>
+                <li class="list-group-item">{{cliente.solicitudes[0].ingresos}}</li>
+                <li class="list-group-item">{{cliente.solicitudes[0].direccion}}</li>
+                <li class="list-group-item">{{cliente.solicitudes[0].telefono}}</li>
+                <li class="list-group-item">{{cliente.solicitudes[0].email}}</li>
+                <li class="list-group-item">{{cliente.solicitudes[0].banco}}</li>
+            </ul>
+        </div>
 
-<div>true</div>
 
-<div *ngFor="let cliente of arrClientes; index as i">
-    <h3>{{cliente.nombre +' '+  cliente.apellidos}}</h3>
-    {{i}}
-    <p>{{cliente.solicitudes[0].ingresos}}</p>
-    <p>{{cliente.solicitudes[0].estado}}</p>
+        <div [ngClass]="{
+            'fondoGris': cliente.solicitudes[0].estado === 'Pendiente',
+            'fondoVerde': cliente.solicitudes[0].estado === 'Aprobado',
+            'fondoRojo': cliente.solicitudes[0].estado === 'Denegado'
+            }" class="card text-white mb-3" style="max-width: 18rem;">
+            <div class="card-header">ESTADO DE LA SOLICITUD</div>
+            <div class="card-body">
+                <p class="card-text">{{cliente.solicitudes[0].estado}}</p>
+            </div>
+        </div>
 
-    <div>
-
-        <button *ngIf="rol === 'Administrador'" type="button" class="btn btn-primary" data-toggle="modal"
-            [attr.data-target]="'#modal'+ i" (click)="actualizarSolicitud(cliente._id)">
-            Actualizar
-        </button>
+        <div>
+            <button *ngIf="rol === 'Administrador'" type="button" class="btn btn-outline-light mb-4" data-toggle="modal"
+                [attr.data-target]="'#modal'+ i" (click)="actualizarSolicitud(cliente._id)">
+                Actualizar
+            </button>
+        </div>
 
     </div>
-</div>
+</section>
+
+
 
 <div *ngFor="let cliente of arrClientes; index as i" class="modal fade" id="modal{{i}}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <div class="header modal-header text-white">
+                <h5 class="modal-title" id="exampleModalLabel"><img src="../../assets/png/money-1.png" class="mx-3"
+                        width="45" height="45">Actualizar datos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div *ngIf="actualizar" class="modal-body">
+            <div *ngIf="actualizar" class="modal-body bg-light">
 
-                <div class="form-group">
-                    <label>NOMBRE</label>
-                    <input type="text" [(ngModel)]="actualizar.nombre">
-                </div>
+                <input type="text" class="form-control my-1" placeholder="NOMBRE" [(ngModel)]="actualizar.nombre">
 
-                <div class="form-group">
-                    <label>APELLIDOS</label>
-                    <input type="text" [(ngModel)]="actualizar.apellidos">
-                </div>
+                <input type="text" class="form-control my-1" placeholder="APELLIDOS" [(ngModel)]="actualizar.apellidos">
 
-                <div class="form-group">
-                    <label>DNI/NIE</label>
-                    <input type="text" [(ngModel)]="actualizar.dni">
-                </div>
+                <input type="text" class="form-control my-1" placeholder="DNI/NIE" [(ngModel)]="actualizar.dni">
 
-                <div class="form-group">
-                    <label>FECHA DE NACIMIENTO</label>
-                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].fecha_nacimiento">
-                </div>
+                <input type="text" class="form-control my-1" placeholder="FECHA DE NACIMIENTO"
+                    [(ngModel)]="actualizar.solicitudes[0].fecha_nacimiento">
 
-                <div class="form-group">
-                    <label>TELEFONO</label>
-                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].telefono">
-                </div>
+                <input type="text" class="form-control my-1" placeholder="TELEFONO"
+                    [(ngModel)]="actualizar.solicitudes[0].telefono">
 
-                <div class="form-group">
-                    <label>DIRECCION</label>
-                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].direccion">
-                </div>
+                <input type="text" class="form-control my-1" placeholder="DIRECCION"
+                    [(ngModel)]="actualizar.solicitudes[0].direccion">
 
-                <div class="form-group">
-                    <label>EMAIL</label>
-                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].email">
-                </div>
+                <input type="text" class="form-control my-1" placeholder="EMAIL"
+                    [(ngModel)]="actualizar.solicitudes[0].email">
 
-                <div class="form-group">
-                    <label>INGRESOS</label>
-                    <select [(ngModel)]="actualizar.solicitudes[0].ingresos">
-                        <option>Asalariado por cuenta ajena</option>
-                        <option>Autonomo</option>
-                        <option>Pensionista/Jubilado</option>
-                    </select>
-                </div>
+                <select class="form-control my-1" [(ngModel)]="actualizar.solicitudes[0].ingresos">
+                    <option>Asalariado por cuenta ajena</option>
+                    <option>Autonomo</option>
+                    <option>Pensionista/Jubilado</option>
+                </select>
 
-                <div class="form-group">
-                    <label>SU CUENTA BANCARIA</label>
-                    <input type="text" [(ngModel)]="actualizar.solicitudes[0].banco">
-                </div>
+                <input class="form-control my-1" type="text" placeholder="CUENTA BANCARIA"
+                    [(ngModel)]="actualizar.solicitudes[0].banco">
 
-                <div class="form-group">
-                    <label>ESTADO</label>
-                    <select [(ngModel)]="actualizar.solicitudes[0].estado">
-                        <option>pendiente</option>
-                        <option>aprobado</option>
-                        <option>denegado</option>
-                    </select>
-                </div>
-
-
-
-
+                <select class="form-control my-1" [(ngModel)]="actualizar.solicitudes[0].estado">
+                    <option>Pendiente</option>
+                    <option>Aprobado</option>
+                    <option>Denegado</option>
+                </select>
             </div>
+
             <div class="modal-footer">
-                <button (click)="enviar()">Enviar</button>
+                <button class="btn btn-outline-light" data-dismiss="modal" (click)="enviar()">Enviar</button>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Modal 
-<div *ngFor="let cliente of arrClientes; index as i" id="modal{{i}}" class="modal fade" tabindex="-1" role="dialog"
-    aria-hidden="true">
-
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">FORMULARIO</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-        </div>
-    </div> -->

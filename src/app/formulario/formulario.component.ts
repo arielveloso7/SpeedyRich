@@ -24,7 +24,10 @@ export class FormularioComponent implements OnInit {
       fecha_nacimiento: new FormControl('', [Validators.required]),
       direccion: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),
-      eamil: new FormControl('', [Validators.required]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/)
+      ]),
       ingresos: new FormControl('', [Validators.required]),
       banco: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required])
@@ -43,9 +46,9 @@ export class FormularioComponent implements OnInit {
       let value = this.formulario.value[key];
 
       console.log(key, value);
+
       if (key !== "image")
         formData.append(key, value);
-
     }
 
     formData.append('image', this.selectedFile, this.selectedFile.name);
@@ -57,7 +60,6 @@ export class FormularioComponent implements OnInit {
   async onFileChanged(event) {
     try {
       this.selectedFile = event.target.files[0];
-      //console.log(this.selectedFile);
       event.preventDefault();
     }
     catch (err) {

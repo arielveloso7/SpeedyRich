@@ -1,15 +1,29 @@
 <header>
+    <nav class="navbar navbar-light justify-content-between">
+        <a [routerLink]="['/home']" class="navbar-brand text-white ml-4"><img src="../../assets/png/car.png" width="60"
+                height="60">
+            SpeedyRich</a>
 
-    <nav class="navbar navbar-dark bg-dark justify-content-between">
-        <a [routerLink]="['/home']" class="navbar-brand">SPEEDYRICH</a>
-
-        <a href="#" class="form-inline">
-            <button class="btn btn-outline-light my-2 my-sm-0">Volver al inicio</button>
+        <a class="form-inline">
+            <button [routerLink]="['/home']" class="btn btn-outline-light my-2 my-sm-0 mr-4">Volver al inicio</button>
         </a>
     </nav>
 
+</header>
 
-    <h1>¡SOLICITUD EXITOSA!</h1>
-    <label>{{resultado}}</label>
-    <P>recuerda que con tu numero de DNI y la clave facilitada en el formulario, ya puedes acceder a tu espacio cliente.
-    </P>
+<main>
+
+
+    <div class="card text-white m-3 shadow rounded">
+        <img src="../../assets/2959281.jpg" class="card-img">
+        <div class="card-img-overlay">
+            <h1 class="card-title">¡SOLICITUD
+                EXITOSA!</h1>
+            <h4 class="card-text"><img class="mr-3" src="../../assets/png/loan.png" width="50" height="50">{{resultado}}
+            </h4>
+            <p class="card-text">Recuerda que con tu número de DNI y la clave facilada en el formulario, ya puedes
+                acceder a tu espacio cliente.</p>
+        </div>
+    </div>
+
+</main>
